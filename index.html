@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style.css"/>
+    <title>Weather</title>
+</head>
+<body>
+    <header>Weather Board</header>
+    <main>
+    <div class="container">
+        <aside>
+            <input type="text" class="searchbox" id="citySearch">
+            <button class="search" id="search">Search</button>
+            <div class="search-history">search-history</div>
+        </aside>
+    
+        <div class="datebox">
+            <div class="date" id="date">
+                Monday, October 23
+            </div>
+            <div class="time" id="time">
+                10:20<span id="am-pm"></span>
+            </div> 
+            <img src="" alt="weather icon" class="w-icon">
+            <div class="others" id="current-weather">
+                <div class="weather-items">
+                    <div>Temperature</div>
+                    <div>Wind Speed</div>
+                    <div>Humidity</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="future-forecast" id="future-weather">
+            <div class="day">Weekday</div>
+            <img src="" alt="weather icon" class="w-icon">
+            <div class="temp">temp</div>
+            <div class="wind">wind</div>
+            <div class="humidity">humidity</div>
+        </div>
+    </div>
+    </main>
+<script src="assets/script.js"></script>
+</body>
+</html>

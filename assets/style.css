@@ -1,0 +1,24 @@
+* {
+    margin:1em;
+}
+header {
+    border:.2rem solid darkblue;
+    text-align: center;
+    font-size: 5rem;
+    margin: .2rem;
+}
+aside{
+    border:.2rem solid darkblue;
+    max-width:40%;
+    max-height:100vh;
+}
+.container{
+    display:flex;
+}
+.datebox {
+    border:.2rem solid darkblue;
+    text-align: center;
+}
+.future-forecast{
+    border:.2rem solid darkblue;
+}
