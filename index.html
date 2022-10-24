@@ -7,42 +7,68 @@
     <link rel="stylesheet" href="assets/style.css"/>
     <title>Weather</title>
 </head>
+<style>
+    html {
+      background-image: url(assets/weather-background.jpg);
+      background-repeat: no-repeat;
+      background-size:cover;
+      background-position: center;
+    }
+    </style>
 <body>
-    <header>Weather Board</header>
-    <main>
-    <div class="container">
-        <aside>
-            <input type="text" class="searchbox" id="citySearch">
-            <button class="search" id="search">Search</button>
-            <div class="search-history">search-history</div>
-        </aside>
-    
-        <div class="datebox">
-            <div class="date" id="date">
-                Monday, October 23
+    <header>Weather Forecast</header>
+        <main>
+        <!--sidebar that contains search textbox-->
+            <aside>
+                <h1>Search for a City</h1:>
+                <input type="text" class="searchbox" id="citySearch" placeholder="City">
+                <button class="search" id="search">SEARCH</button>
+                <div id="search-history"></div>
+                <!--Past Searched Cities listed as buttons here-->
+            </aside>
+            <div class="present-weather">
+        <!--Where weather for the current day will be displayed-->
+                <section class="datebox">
+                    <p class="date" id="date">Monday, October 23</p>
+                    <p class="time" id="time">10:20<span id="am-pm"></span></p> 
+                    <img src="" alt="weather icon" class="w-icon">
+                    <p class="weather-items">Temperature</p>
+                    <p class="weather-items">Wind Speed</p>
+                    <p class="weather-items">Humidity</p>
+                </section>
+            <div class="container">
+        <!--Forecast for future days are displayed here-->
+                <section class="future-forecast" id="weather-2">
+                    <p class="day">Weekday</p>
+                    <img src="" alt="weather icon" class="w-icon">
+                    <p class="temp">temp</p>
+                    <p class="wind">wind</p>
+                    <p class="humidity">humidity</p>
+                </section>
+                <section class="future-forecast" id="weather-3">
+                    <p class="day">Weekday</p>
+                    <img src="" alt="weather icon" class="w-icon">
+                    <p class="temp">temp</p>
+                    <p class="wind">wind</p>
+                    <p class="humidity">humidity</p>
+                </section>
+                <section class="future-forecast" id="weather-4">
+                    <p class="day">Weekday</p>
+                    <img src="" alt="weather icon" class="w-icon">
+                    <p class="temp">temp</p>
+                    <p class="wind">wind</p>
+                    <p class="humidity">humidity</p>
+                </section>
+                <section class="future-forecast" id="weather-5">
+                    <p class="day">Weekday</p>
+                    <img src="" alt="weather icon" class="w-icon">
+                    <p class="temp">temp</p>
+                    <p class="wind">wind</p>
+                    <p class="humidity">humidity</p>
+                </section>
             </div>
-            <div class="time" id="time">
-                10:20<span id="am-pm"></span>
-            </div> 
-            <img src="" alt="weather icon" class="w-icon">
-            <div class="others" id="current-weather">
-                <div class="weather-items">
-                    <div>Temperature</div>
-                    <div>Wind Speed</div>
-                    <div>Humidity</div>
-                </div>
             </div>
-        </div>
-    </div>
-        <div class="future-forecast" id="future-weather">
-            <div class="day">Weekday</div>
-            <img src="" alt="weather icon" class="w-icon">
-            <div class="temp">temp</div>
-            <div class="wind">wind</div>
-            <div class="humidity">humidity</div>
-        </div>
-    </div>
-    </main>
-<script src="assets/script.js"></script>
+        </main>
+    <script src="assets/script.js"></script>
 </body>
 </html>

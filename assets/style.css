@@ -1,24 +1,95 @@
 * {
     margin:1em;
+    color:whitesmoke;
+    
 }
 header {
-    border:.2rem solid darkblue;
+    border:.2rem solid white;
+    border-radius: 20px;
     text-align: center;
-    font-size: 5rem;
-    margin: .2rem;
+    font-size: 3rem;
+    margin:0,2rem;
+    background-color: rgba(24,24,27, 0.7);
+    max-width: 100%;
+}
+
+main {
+    margin:0;
+    display: flex;
+    justify-content: center;
 }
 aside{
-    border:.2rem solid darkblue;
-    max-width:40%;
-    max-height:100vh;
+    border:.2rem solid white;
+    border-radius: 20px;
+    background-color: rgba(24,24,27, 0.7);
+    max-width:15%;
+    max-height:100rem;
+    text-align: center;
+    padding:1rem;
 }
-.container{
+.searchbox{
+    margin-top:2rem;
+    border:.1rem solid black;
+    border-radius:6px;
+    text-align: center;
+    max-width: 100%;
+}
+.searchbox:hover {
+    background-color: silver;
+}
+.search {
+    margin-top:2rem;
+    background-color: black;
+    color:silver;
+    border-radius:6px;
+}
+.search:hover {
+    background-color: silver;
+    color:black;
+}
+.container {
+    margin: .1rem;
     display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-basis:100%;
+    max-width: 100vw;
+   
 }
 .datebox {
-    border:.2rem solid darkblue;
+    margin-top:0;
+    border:.2rem solid white;
     text-align: center;
+    background-color: rgba(24,24,27, 0.7);
+    border-radius: 20px;
+    font-size: 2rem;
+    max-width:100vw;
 }
-.future-forecast{
-    border:.2rem solid darkblue;
+.future-forecast {
+    margin-top:0;
+    border:.2rem solid white;
+    background-color: rgba(24,24,27, 0.7);
+    border-radius: 20px;
+    text-align: center;
+    max-width:100vw;
+    font-size: 1.5rem;
+}
+
+@media screen and (max-width:760px) {
+    main{
+        display:flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        max-width: 100%;
+    }
+    aside, .datebox {
+        max-height:100vh;
+        max-width:100%;
+        text-align: center;
+        margin:0;
+    }
+    header{
+        margin:0;
+    }
 }
