@@ -5,9 +5,9 @@ The motivation for this project is to create a website that allows users to sear
 
 In completing this project I have learned the process of utilizing data from third-party APIs in my web application.I have been able to exercise knowledge in the use of variables, functions, for loops, event listeners, local storage, data attributes, time structure, and creating/appending elements in HTML.
 
-![Weather-App](/assets/planner.png)
+![Weather-App](assets/weatherapp.png)
 
-link
+https://cherie2.github.io/Weather-Forecast/
 
 ## Features
   
@@ -35,7 +35,7 @@ In order to utilize this website, user must have access to a web browser.
 
 This website allows for users to choose a city and receive the current weather, as well as a forecast for 5 days out. The weather conditions displayed will include the temperature, the humidity, and the the wind speed. When the user searches for a city, that city will be stored in the history and displayed as a button for future ease of selection.
 
-link provided here 
+link provided here https://cherie2.github.io/Weather-Forecast/
 
 ## Credits
 

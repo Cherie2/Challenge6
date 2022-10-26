@@ -7,10 +7,21 @@ header {
     border:.2rem solid white;
     border-radius: 20px;
     text-align: center;
-    font-size: 3rem;
+    font-size: 3.5rem;
+    font-weight: 900;
+    text-shadow: 4px 4px rgb(5, 32, 40);
+    text-transform: capitalize;
     margin:0,2rem;
     background-color: rgba(24,24,27, 0.7);
     max-width: 100%;
+}
+
+h1 {
+    margin:0;
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-shadow: 3px 3px rgb(37, 44, 46);
+    text-transform: capitalize;
 }
 
 main {
@@ -18,35 +29,47 @@ main {
     display: flex;
     justify-content: center;
 }
+p {
+    text-transform: capitalize;
+    font-size: 2rem;
+}
+
 aside{
     border:.2rem solid white;
     border-radius: 20px;
     background-color: rgba(24,24,27, 0.7);
-    max-width:15%;
-    max-height:100rem;
+    max-width:12%;
+    max-height:115rem;
     text-align: center;
     padding:1rem;
 }
+
 .searchbox{
     margin-top:2rem;
     border:.1rem solid black;
     border-radius:6px;
     text-align: center;
     max-width: 100%;
+    color:black;
+    font-size:1rem;
 }
+
 .searchbox:hover {
     background-color: silver;
 }
+
 .search {
     margin-top:2rem;
     background-color: black;
     color:silver;
     border-radius:6px;
 }
+
 .search:hover {
     background-color: silver;
     color:black;
 }
+
 .container {
     margin: .1rem;
     display:flex;
@@ -54,8 +77,8 @@ aside{
     justify-content: center;
     flex-basis:100%;
     max-width: 100vw;
-   
 }
+
 .datebox {
     margin-top:0;
     border:.2rem solid white;
@@ -63,8 +86,13 @@ aside{
     background-color: rgba(24,24,27, 0.7);
     border-radius: 20px;
     font-size: 2rem;
-    max-width:100vw;
+    max-width:100%;
 }
+
+#w-icon{
+    margin: 0;
+}
+
 .future-forecast {
     margin-top:0;
     border:.2rem solid white;
@@ -75,7 +103,7 @@ aside{
     font-size: 1.5rem;
 }
 
-@media screen and (max-width:760px) {
+@media screen and (max-width:1280px) {
     main{
         display:flex;
         flex-wrap: wrap;
@@ -83,13 +111,21 @@ aside{
         align-items: center;
         max-width: 100%;
     }
-    aside, .datebox {
+    aside {
         max-height:100vh;
         max-width:100%;
         text-align: center;
-        margin:0;
+        margin:.1rem;
     }
     header{
-        margin:0;
+        text-align: center;
+        margin-bottom:.2rem;
+        font-size: 2rem;
+    }
+    p{
+        font-size: 1rem;
+    }
+    h1 {
+        font-size: 1.5rem;
     }
 }
