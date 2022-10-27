@@ -28,7 +28,7 @@ function userCity() {
 //Function to get user's searched city's latitude and longitude to use in displayCurrentWeather()
 function getCityLatLon(input) {
     var city=input;
-    var geocoderURL = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=5&appid=" + weatherAPIKey;
+    var geocoderURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=5&appid=" + weatherAPIKey;
     
     fetch(geocoderURL)
         .then(function (response) {
@@ -53,7 +53,7 @@ function displayCurrentWeather(city) {
             document.querySelector("#name").textContent=currentWeather.name;
             document.getElementById("date").textContent=time;
             document.querySelector("#weather-desc").textContent=currentWeather.weather[0].description;  
-            document.querySelector("#w-icon").src = "http://openweathermap.org/img/wn/" + currentWeather.weather[0].icon + "@2x.png";
+            document.querySelector("#w-icon").src = "https://openweathermap.org/img/wn/" + currentWeather.weather[0].icon + "@2x.png";
             document.querySelector("#weather-temp").textContent="Temperature: " + currentWeather.main.temp + " °F";
             document.querySelector("#weather-speed").textContent="Wind Speed: " + currentWeather.wind.speed + " mph";
             document.querySelector("#weather-humidity").textContent="Humidity: " + currentWeather.main.humidity + " %";
@@ -63,7 +63,7 @@ function displayCurrentWeather(city) {
 // Function that uses current searched city to display forecast for the next few days
 function displayFutureWeather(cityName) {
     var cityName=cityName.name;
-    var forecastWeatherUrl = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid=" + weatherAPIKey;
+    var forecastWeatherUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid=" + weatherAPIKey;
     fetch(forecastWeatherUrl)
         .then(function (response) {
             return response.json();
@@ -78,11 +78,11 @@ function displayFutureWeather(cityName) {
             document.querySelector("#day5").textContent=day5;
             document.querySelector("#day6").textContent=day6;
 //Assigning icons for next 5 day forecast based off array data            
-            document.querySelector(".w-icon-2").src="http://openweathermap.org/img/wn/" + forecast[0].weather[0].icon + "@2x.png";
-            document.querySelector(".w-icon-3").src="http://openweathermap.org/img/wn/" + forecast[1].weather[0].icon + "@2x.png";
-            document.querySelector(".w-icon-4").src="http://openweathermap.org/img/wn/" + forecast[2].weather[0].icon + "@2x.png";
-            document.querySelector(".w-icon-5").src="http://openweathermap.org/img/wn/" + forecast[3].weather[0].icon + "@2x.png";
-            document.querySelector(".w-icon-6").src="http://openweathermap.org/img/wn/" + forecast[4].weather[0].icon + "@2x.png";
+            document.querySelector(".w-icon-2").src="https://openweathermap.org/img/wn/" + forecast[0].weather[0].icon + "@2x.png";
+            document.querySelector(".w-icon-3").src="https://openweathermap.org/img/wn/" + forecast[1].weather[0].icon + "@2x.png";
+            document.querySelector(".w-icon-4").src="https://openweathermap.org/img/wn/" + forecast[2].weather[0].icon + "@2x.png";
+            document.querySelector(".w-icon-5").src="https://openweathermap.org/img/wn/" + forecast[3].weather[0].icon + "@2x.png";
+            document.querySelector(".w-icon-6").src="https://openweathermap.org/img/wn/" + forecast[4].weather[0].icon + "@2x.png";
 //Assigning weather condition description to each specific day based off array data
             document.querySelector("#weather-desc-2").textContent=forecast[0].weather[0].description;
             document.querySelector("#weather-desc-3").textContent=forecast[1].weather[0].description;

@@ -22,6 +22,7 @@ h1 {
     font-weight: 900;
     text-shadow: 3px 3px rgb(37, 44, 46);
     text-transform: capitalize;
+    text-align: center;
 }
 
 main {
