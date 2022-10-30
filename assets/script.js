@@ -1,34 +1,122 @@
 
 
-var weatherAPIKey = "0f87f7930ed9ae3d9a321c614c64f22c";
-var inputCity = document.getElementById('citySearch');
-var citySearchBtn = document.getElementById('search');
+const weatherAPIKey = "0f87f7930ed9ae3d9a321c614c64f22c";
+const inputCity = document.getElementById('citySearch');
+const citySearchBtn = document.getElementById('search');
+const city1=document.querySelector("#city1");
+const city2=document.querySelector("#city2");
+const city3=document.querySelector("#city3");
+const city4=document.querySelector("#city4");
+const city5=document.querySelector("#city5");
 
 //Allows use of javascript to have current date and dates 5 days from current date
-var date1 = new Date();
-var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-var days =["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ];
-var year = date1.getFullYear();
-var day = date1.getDay();
-var month = date1.getMonth();
-var date = date1.getDate();
-var time = days[day] + " " + months[month] + ' ' + date + ', ' + year;
-var tomorrow = days[day + 1] + ' ' + months[month] + ' ' + (date + 1) + ', ' + year;
-var day3 = days[day + 2] + ' ' + months[month] + ' ' + (date + 2) + ', ' + year;
-var day4 = days[day + 3] + ' ' + months[month] + ' ' + (date + 3) + ', ' + year;
-var day5 = days[day + 4] + ' ' + months[month] + ' ' + (date + 4) + ', ' + year;
-var day6 = days[0] + ' ' + months[month] + ' ' + (date + 5) + ', ' + year;
+const date1 = new Date();
+const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const days =["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const time = days[date1.getDay()] + " " + months[date1.getMonth()] + ' ' + date1.getDate() + ', ' + date1.getFullYear();
 
-//Function to respond to user city search and call subsequent functions after search button is engaged
+//Function that responds to city search input and calls subsequent function when search button is engaged, appends button with city name, stores past cities in localStorage
 function userCity() {
-    var input = inputCity.value;
-    getCityLatLon(input);
+    let input = inputCity.value;
+    if (localStorage.getItem("search-history")==null){
+        localStorage.setItem("search-history", input);
+        let userHistoryBtn = document.createElement("button");
+        userHistoryBtn.textContent=input;
+        city1.append(userHistoryBtn);
+    } else if (localStorage.getItem("search-history")!=null && localStorage.getItem("search-history2")==null){
+        localStorage.setItem("search-history2", input);
+        let userHistoryBtn = document.createElement("button");
+        userHistoryBtn.textContent=input;
+        city2.append(userHistoryBtn);
+    }  else if (localStorage.getItem("search-history2")!=null && localStorage.getItem("search-history3")==null){
+        localStorage.setItem("search-history3", input);
+        let userHistoryBtn = document.createElement("button");
+        userHistoryBtn.textContent=input;
+        city3.append(userHistoryBtn);
+    }  else if (localStorage.getItem("search-history3")!=null && localStorage.getItem("search-history4")==null){
+        localStorage.setItem("search-history4", input);
+        let userHistoryBtn = document.createElement("button");
+        userHistoryBtn.textContent=input;
+        city4.append(userHistoryBtn);
+    }  else if (localStorage.getItem("search-history4")!=null && localStorage.getItem("search-history5")==null){
+        localStorage.setItem("search-history5", input);
+        let userHistoryBtn = document.createElement("button");
+        userHistoryBtn.textContent=input;
+        city5.append(userHistoryBtn);
+    } else if (localStorage.getItem("search-history5")!=null && localStorage.getItem("search-history")!=null){
+        localStorage.setItem("search-history", input);
+        let userHistoryBtn = document.createElement("button");
+        userHistoryBtn.textContent=input;
+        city1.replaceWith(userHistoryBtn);
+    }
+    getCityLatLon(input); 
+    inputCity.value="";
 }
+//when page reloads, function recalls info from local storage to generate buttons
+function cityHistory() {
+    let cityH1=document.createElement("button");
+    let cityH2=document.createElement("button");
+    let cityH3=document.createElement("button");
+    let cityH4=document.createElement("button");
+    let cityH5=document.createElement("button");
+    cityH1.textContent=localStorage.getItem("search-history");
+    city1.append(cityH1);
+    cityH2.textContent=localStorage.getItem("search-history2");
+    city2.append(cityH2);
+    cityH3.textContent=localStorage.getItem("search-history3");
+    city3.append(cityH3);
+    cityH4.textContent=localStorage.getItem("search-history4");
+    city4.append(cityH4);
+    cityH5.textContent=localStorage.getItem("search-history5");
+    city5.append(cityH5);
+    getCityLatLon(cityH1.textContent);
+//Keeps from appending an empty button if there is no data
+    if (cityH1.textContent==""){
+        cityH1.setAttribute("style", "display:none")
+    }
+    if (cityH2.textContent==""){
+        cityH2.setAttribute("style", "display:none")
+    }
+    if (cityH3.textContent==""){
+        cityH3.setAttribute("style", "display:none")
+    }
+    if (cityH4.textContent==""){
+        cityH4.setAttribute("style", "display:none")
+    }
+    if (cityH5.textContent==""){
+        cityH5.setAttribute("style", "display:none")
+    }
+}  
+//Functions that allow user to click on buttons of past searched cities and get their weather
+function cityBtn1() { 
+    let city1E = document.querySelector("#city1").textContent;
+        getCityLatLon(city1E);
+}
+
+function cityBtn2() { 
+        let city2E = document.querySelector("#city2").textContent;
+            getCityLatLon(city2E);
+} 
+
+function cityBtn3() { 
+    let city3E = document.querySelector("#city3").textContent;
+        getCityLatLon(city3E);
+} 
+
+function cityBtn4() { 
+    let city4E = document.querySelector("#city4").textContent;
+        getCityLatLon(city4E);
+}
+
+function cityBtn5() { 
+    let city5E = document.querySelector("#city5").textContent;
+        getCityLatLon(city5E);
+}  
 
 //Function to get user's searched city's latitude and longitude to use in displayCurrentWeather()
 function getCityLatLon(input) {
-    var city=input;
-    var geocoderURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=5&appid=" + weatherAPIKey;
+    let city=input;
+    let geocoderURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=5&appid=" + weatherAPIKey;
     
     fetch(geocoderURL)
         .then(function (response) {
@@ -40,9 +128,9 @@ function getCityLatLon(input) {
 }
 //function that takes latitude and longitude data to return the city's current weather conditions
 function displayCurrentWeather(city) {  
-    var longitude = city[0].lon
-    var latitude = city[0].lat
-    var currentWeatherUrl = "https://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&units=imperial&appid=" + weatherAPIKey;
+    let longitude = city[0].lon
+    let latitude = city[0].lat
+    let currentWeatherUrl = "https://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&units=imperial&appid=" + weatherAPIKey;
     
     fetch(currentWeatherUrl)
         .then(function (response) {
@@ -63,7 +151,8 @@ function displayCurrentWeather(city) {
 // Function that uses current searched city to display forecast for the next few days
 function displayFutureWeather(cityName) {
     var cityName=cityName.name;
-    var forecastWeatherUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid=" + weatherAPIKey;
+    let forecastWeatherUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid=" + weatherAPIKey;
+    
     fetch(forecastWeatherUrl)
         .then(function (response) {
             return response.json();
@@ -72,11 +161,21 @@ function displayFutureWeather(cityName) {
 //Array for 5 day forecast data from openWeather API
             forecast =[future.list[5], future.list[13], future.list[21], future.list[29], future.list[37]];
 //Assigning dates for the 5 day forecast
-            document.querySelector("#day2").textContent=tomorrow;
-            document.querySelector("#day3").textContent=day3;
-            document.querySelector("#day4").textContent=day4;
-            document.querySelector("#day5").textContent=day5;
-            document.querySelector("#day6").textContent=day6;
+            const a = new Date(forecast[0].dt * 1000);
+            const dayName = days[a.getDay()]+ " " + months[a.getMonth()] + ' ' + [a.getDate()] + ', ' + [a.getFullYear()];
+            const b = new Date(forecast[1].dt * 1000);
+            const dayName1 = days[b.getDay()]+ " " + months[b.getMonth()] + ' ' + [b.getDate()] + ', ' + [b.getFullYear()];
+            const c = new Date(forecast[2].dt * 1000);
+            const dayName2 = days[c.getDay()]+ " " + months[c.getMonth()] + ' ' + [c.getDate()] + ', ' + [c.getFullYear()];
+            const d = new Date(forecast[3].dt * 1000);
+            const dayName3 = days[d.getDay()]+ " " + months[d.getMonth()] + ' ' + [d.getDate()] + ', ' + [d.getFullYear()];
+            const e = new Date(forecast[4].dt * 1000);
+            const dayName4 = days[e.getDay()]+ " " + months[e.getMonth()] + ' ' + [e.getDate()] + ', ' + [e.getFullYear()];
+            document.querySelector("#day2").textContent=dayName;
+            document.querySelector("#day3").textContent=dayName1;
+            document.querySelector("#day4").textContent=dayName2;
+            document.querySelector("#day5").textContent=dayName3;
+            document.querySelector("#day6").textContent=dayName4;
 //Assigning icons for next 5 day forecast based off array data            
             document.querySelector(".w-icon-2").src="https://openweathermap.org/img/wn/" + forecast[0].weather[0].icon + "@2x.png";
             document.querySelector(".w-icon-3").src="https://openweathermap.org/img/wn/" + forecast[1].weather[0].icon + "@2x.png";
@@ -109,21 +208,11 @@ function displayFutureWeather(cityName) {
             document.querySelector("#day6-h").textContent="Humidity: " + forecast[4].main.humidity + " %";
         });
 }  
-//need to add function to save user cities and add them as buttons for future use
-function cityHistory() {
-    if(citySearchBtn == "clicked"){
-        var searchHistory=document.querySelector("#search-history");
-        var userHistory = document.createElement("button");
-        userHistory.textContent = inputCity.value;
-        searchHistory.append(userHistory); 
-        console.log(inputCity.value);
-    }else if(userHistory > 5){
-
-    }
-    // localStorage.setItem(inputCity)
-}
 cityHistory();
 //Event listener-When user types in city and clicks search, functions will run
-citySearchBtn.addEventListener('click', userCity, cityHistory);
-//userHistory.addEventListener("click",)
-
+citySearchBtn.addEventListener('click', userCity);
+city1.addEventListener("click", cityBtn1);
+city2.addEventListener("click", cityBtn2);
+city3.addEventListener("click", cityBtn3);
+city4.addEventListener("click", cityBtn4);
+city5.addEventListener("click", cityBtn5);
