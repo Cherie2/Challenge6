@@ -5,9 +5,14 @@ The motivation for this project is to create a website that allows users to sear
 
 In completing this project I have learned the process of utilizing data from third-party APIs in my web application.I have been able to exercise knowledge in the use of variables, functions, for loops, event listeners, local storage, data attributes, time structure, and creating/appending elements in HTML.
 
-![Weather-App](assets/weatherapp.png)
-
+### Deployed Link
 https://cherie2.github.io/Weather-Forecast/
+
+![Weather-App-Screenshot](assets/images/weatherapp.png)
+
+
+![Weather-App](assets/images/Weather.gif)
+
 
 ## Features
   
